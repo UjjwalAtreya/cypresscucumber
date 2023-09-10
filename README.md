@@ -29,12 +29,11 @@ Install project dependencies with: npm i
 ## Run the demo:
 
 1. Standard Execution: npm run cypress:execution
-2. Native report(with JSON FORMATTER): Check how to do it in this video: [Cucumber BDD Report - YouTube](https://www.youtube.com/watch?v=5AGXK9cL2fs&t=2s&ab_channel=JoanMedia)
-3. Allure Report: 
+2. Allure Report: 
    1. npm run cypress:execution-allure
    2. npm run allure:report
    3. allure open
-   4. You'll get a report like this one: GitHub Page - Allure Report Sample: https://joanesquivel.github.io/cypress-cucumber-boilerplate/
+  
 
 
 ##  Sample repo to generate an allure report as an artifact using GH Actions

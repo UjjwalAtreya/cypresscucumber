@@ -26,6 +26,18 @@ When("User selects property type {string} with maxPrice {string} and clicks sear
   searchPage.clickSearchBtn()
 });
 
+When('User search for {string} location under search box and selects the first location if present',(location)=>{
+  searchPage.enterRegionLocation(location);
+  searchPage.selectFirstLocation()
+  searchPage.clickSearchBtn()
+ 
+
+})
+
+Then('User will navigate to first property and verify the available date is not empty',()=>{
+  resultPage.selectFirstPropertyAndVerifyData()
+})
+
 
 
 

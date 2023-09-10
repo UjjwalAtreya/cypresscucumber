@@ -9,8 +9,13 @@ class SearchPage {
     searchbtn: () => cy.get("svg[viewbox='0 0 15 15'] ").eq(1),
     findBtn: () => cy.get('[data-testid="filters-form-btn-find"]'),
     commercialPropertiesCheckBox: () => cy.get('[class="checkbox-component__box"]'),
-    selectCategory: (category) => cy.contains(category)
-    
+    selectCategory: (category) => cy.contains(category),
+
+    firstSearchLocation: () => cy.get('[class="multi-selection-autocomplete__suggestion-text"]').first(),
+    inputSearchBox: () => cy.get('[data-testid="input"]').first(),
+    noDataFoundMessage: () => cy.get('[class="multi-selection-autocomplete__no-suggestions"]')
+
+
 
   };
   propertyType() {
@@ -28,14 +33,25 @@ class SearchPage {
     this.elements.searchbtn().click({ force: true })
     this.elements.findBtn().click({ force: true })
   }
-  selectCommercialPropertiesOnly(){
-    this.elements.commercialPropertiesCheckBox().click({force : true})
+  selectCommercialPropertiesOnly() {
+    this.elements.commercialPropertiesCheckBox().click({ force: true })
   }
-  categorySelection(categoryToSelect){
-    this.elements.selectCategory(categoryToSelect).click({force : true})
+  categorySelection(categoryToSelect) {
+    this.elements.selectCategory(categoryToSelect).click({ force: true })
   }
 
-  
+  selectFirstLocation() {
+    if (this.elements.firstSearchLocation().should('exist')) {
+      this.elements.firstSearchLocation().click({ force: true })
+    }else{
+      cy.log("No Data Found")
+    }
+  }
+  enterRegionLocation(location) {
+    this.elements.inputSearchBox().type(location)
+  }
+
+
 }
 
 export const searchPage = new SearchPage();

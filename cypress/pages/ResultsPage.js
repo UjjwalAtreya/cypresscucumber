@@ -2,12 +2,13 @@ class ResultsPage {
     resultPageElement = {
         searchResultCount: () => cy.get("span[aria-label='Search results count']"),
         propertyBathroom: () => cy.get('[class="property-facts__value"]').eq(2),
-        fisrtProperty: () => cy.get('[data-id="664931"] .property-card_property-card__link__jGpOK'),
+        fisrtProperty: () => cy.get('.property-card_property-card__link__jGpOK').first(),
         propertyPriceCard: () => cy.get('[class="property-price__price"]').first(),
         propertyTile: () => cy.get('[class="text text--size6 text--bold property-page__title"]'),
         propertyDescription: () => cy.get('[data-qs="text-trimmer"]'),
         propertyLocation: () => cy.get('[class="property-location__detail-area"]'),
-        propertySize: () => cy.get('[class="property-facts__value"]').eq(1)
+        propertySize: () => cy.get('[class="property-facts__value"]').eq(1),
+        availableData:()=>cy.get('[class="property-facts__value"]').last()
 
     }
 
@@ -49,6 +50,10 @@ class ResultsPage {
                 expect(text).to.contain(parseInt(resultCount).toLocaleString())
             })
         })
+    }
+    selectFirstPropertyAndVerifyData(){
+        this.resultPageElement.fisrtProperty().click({ force: true })
+        this.resultPageElement.availableData().should('not.be.empty')
     }
 }
 

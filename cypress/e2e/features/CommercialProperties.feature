@@ -5,7 +5,7 @@ Feature: Search commerical properties offices and verify the details.
     Background:
         Given A browser with property finder page 
 
-    Scenario: Click on commercial propeties only checkbox and select offices
+    Scenario: Click on commercial properties only checkbox and select offices
         When User checks commerial proerties only and selects office categories
         Then User should be able to see the property count and verify the propety data
        
