@@ -16,3 +16,5 @@ Install project dependencies with: npm i
    2. npm run allure:report
    3. allure open
   
+To run in CI , the project is setup in github actions, and the yml file is in .github
+  
