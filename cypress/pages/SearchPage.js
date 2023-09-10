@@ -8,7 +8,9 @@ class SearchPage {
     priceDropDown: () => cy.get("div[class='dd__head dd--normal dd--primary']").eq(3),
     searchbtn: () => cy.get("svg[viewbox='0 0 15 15'] ").eq(1),
     findBtn: () => cy.get('[data-testid="filters-form-btn-find"]'),
-    searchResultCount: () => cy.get("span[aria-label='Search results count']")
+    commercialPropertiesCheckBox: () => cy.get('[class="checkbox-component__box"]'),
+    selectCategory: (category) => cy.contains(category)
+    
 
   };
   propertyType() {
@@ -26,16 +28,14 @@ class SearchPage {
     this.elements.searchbtn().click({ force: true })
     this.elements.findBtn().click({ force: true })
   }
-
-  getApiResponseAndVerifyTotalCount() {
-    cy.wait('@results').then((interception) => {
-      const resultCount = JSON.stringify(interception.response.body.pageProps.searchResult.meta.total_count)
-      this.elements.searchResultCount().should('be.visible')
-      this.elements.searchResultCount().invoke('text').then((text) => {
-        expect(text).to.contain(parseInt(resultCount).toLocaleString())
-      })
-    })
+  selectCommercialPropertiesOnly(){
+    this.elements.commercialPropertiesCheckBox().click({force : true})
   }
+  categorySelection(categoryToSelect){
+    this.elements.selectCategory(categoryToSelect).click({force : true})
+  }
+
+  
 }
 
 export const searchPage = new SearchPage();
