@@ -24,7 +24,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: "cypress/e2e/features/*.feature",
-    baseUrl: "https://www.saucedemo.com",
+    baseUrl: "https://www.propertyfinder.bh/",
     chromeWebSecurity: false,
     env: {
       allureReuseAfterSpec: true,
